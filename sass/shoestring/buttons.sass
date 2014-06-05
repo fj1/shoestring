@@ -1,0 +1,82 @@
+@import vars 
+@import mixins 
+
+@mixin button
+  color: black
+  display: inline-block
+  // overrides default gray border on buttons and no-border on <a> and borders on normalize
+  border: 1px solid black
+  // overrides defaults
+  background: white 
+  // overrides <a>
+  text-decoration: none 
+  padding: 5px
+  // to prevent users from being able to select/highlight <a>
+  +user-select
+  // could also use ems
+  +border-radius(3px)
+
+@mixin button-hover
+  background: $off-white
+
+@mixin button-active
+  background: darken(#ccc, 10%)
+
+// this works, but it's only good for primary-button and isn't very DRY
+// @mixin primary-button
+//   background: $primary 
+//   color: white 
+//   &:hover
+//     background: darken($primary, 10%)
+//   &:active
+//     background: darken($primary, 15%)
+
+// this DRYs the code out
+// but actually, it's not even necessary ... the each iterator below takes care of it i think 
+// (except i get an error in the compiler when i comment it out)
+
+@function get-color($search)
+  // pass in the color you want, ie. primary  
+  @return map-get($color-map, $search)
+
+// *******************************
+// actual elements will come below  
+// goal is to make buttons uniform even if they are <a>, <input>, etc.
+
+a.button
+  +button
+  // the & just says a.button:hover
+  &:hover 
+    +button-hover
+  &:active 
+    +button-active
+  &:visited
+    @extend a.button
+  // this works, but it's only good for primary-button and isn't very DRY  
+  // &.primary
+  //   +primary-button
+  // DRYer code: iterate thru color-map
+  @each $key, $value in $color-map
+    &.#{$key}
+      color: white // text color
+      background: get-color($key) // to return the color value
+      border: 2px solid get-color // to find the color value
+      &:hover 
+        background: darken(get-color($key), 10%)
+        border: 2px solid darken(get-color($key), 15%)
+      &:active 
+        background: darken(get-color($key), 15%)
+        border: 2px solid darken(get-color($key), 15%)  
+
+input[type=button], input[type=submit], button 
+  &.button
+    @extend a.button
+    cursor: pointer
+    outline: none
+
+
+
+
+
+
+

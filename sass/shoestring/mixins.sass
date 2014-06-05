@@ -1,0 +1,22 @@
+// takes care of border-radius problems across browsers
+@mixin border-radius($radius) // $radius is variable, so we set it on the next three lines
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+  border-radius: $radius
+
+// takes care of box-sizing problems across browsers
+@mixin box-sizing($value: border-box)
+  -moz-box-sizing: $value
+  -webkit-box-sizing: $value
+  box-sizing: $value  
+
+// user-select means a user canNOT select something
+@mixin user-select()
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none  
+
+ 

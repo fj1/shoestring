@@ -1,0 +1,35 @@
+// adding normalize to override browser defaults
+@import normalize
+
+// provide clearfix 
+@import clearfix
+
+// add variables file
+@import vars
+
+// add mixins
+@import mixins 
+
+@import normalize
+@import links
+
+body
+  background: $mks-blue
+  h1
+    background: $sassy-pink
+
+.border-tester
+  +border-radius(5px)
+  background: darken($mks-blue, 30%)
+  width: 100px
+  height: 100px
+  +user-select()
+
+// Add gridding and responsive design
+@import grid
+
+// add button styles
+@import buttons
+
+// add link styles
+@import links  
