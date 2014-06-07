@@ -1,0 +1,127 @@
+// add normalize to override browser defaults
+@import normalize
+
+// add clearfix
+@import clearfix
+
+// add gridding and responsive design
+@import grid
+
+body 
+  background: black
+  color: white 
+  font-family: 'Bitter', serif
+  text-transform: uppercase
+  margin: 0
+
+.orange-text
+  color: #f36d51
+
+a 
+  color: #f36d51
+  text-decoration: none
+  &:hover
+    color: lighten(#f36d51, 5%)
+  &:active
+    color: darken(#f36d51, 15%)
+
+///////////////  top section  ///////////////
+
+.mug_club_div
+  position: absolute
+  top: 0
+  left: 125px
+
+.mug_club
+  width: 100px
+  height: auto 
+
+.motto
+  text-align: center
+  margin-bottom: 50px
+
+.fa-paw
+  padding: 0 15px 0 15px
+
+.social-wrap
+  display: inline-block
+  position: absolute
+  top: 0
+  right: 0
+  padding-right: 120px
+    
+.social_media 
+  display: inline-block
+  a
+    color: #5e5e5e
+    font-size: 2em
+    padding: 0 3px 0 3px
+    &:hover
+      color: lighten(#f36d51, 5%)
+    &:active
+      color: darken(#f36d51, 15%)
+
+///////////////  middle section  ///////////////
+.logo-wrap
+  text-align: center
+  margin: 0
+  padding: 0
+
+.logo
+  // height: 300px // this would distort the image as it shrunk
+  height: 60%
+  width: auto 
+  margin: 0 auto
+
+.column
+  text-align: center
+
+.column.right
+  float: right
+  margin: 0
+  padding: 0  
+
+///////////////  footer section  ///////////////
+
+.footer
+  text-align: center
+  margin: auto 0
+
+.footer.fa
+  padding-right: 10px
+
+//////////////  media queries //////////////////
+
+// phone size
+@media (max-width: 40rem)
+  .mug_club_div, .mug_club
+    display: none
+  .logo
+    width: 80%
+  .mug_club_text
+    text-align: center
+  .social-wrap
+    display: none
+  .bottom.full-width-container 
+    text-align: center
+  a.bottom.social_media
+    display: inline-block
+    color: #5e5e5e
+    font-size: 2em
+    padding: 0 3px 0 3px
+    // actually pointless to hover on phone
+    // &:hover
+    //   color: lighten(#f36d51, 5%)
+    &:active
+      color: darken(#f36d51, 15%)
+
+// tablet & desktop size
+@media (min-width: 40rem)
+  div.mug_club_text
+    display: none
+  .bottom.full-width-container
+    display: none // not working
+
+
+
+
